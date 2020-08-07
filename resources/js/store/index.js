@@ -13,16 +13,14 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        ajaxCategoriesFromDB(context){
+        ajaxCategoriesFromDB({ commit }){
             axios
             .get('api/category')
             .then(response => {
                 console.log(response.data.categories)
-                context.commit('setCategories', response.data.categories)
+                commit('setCategories', response.data.categories)
             })
-            .catch(error => {
-                console.log('Ошибка!', error)
-            })
+            .catch(error => console.log('Ошибка!', error))
         }
     },
     mutations:{
