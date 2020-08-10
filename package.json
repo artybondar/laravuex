@@ -27,6 +27,7 @@
         "es6-promise": "^4.2.8",
         "npm": "^6.14.7",
         "vue": "^2.6.11",
+        "vue-faq-accordion": "^1.6.2",
         "vuelidate": "^0.7.5",
         "vuex": "^3.5.1"
     }
