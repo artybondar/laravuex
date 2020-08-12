@@ -18,9 +18,12 @@
             <div class="bd-example">
 
                 <ul class="list-group">Вопросы ответы
-                <li v-for="faq in getFAQ"
-                    :value="faq.id"
-                    :key="faq.id" class="list-group-item">{{ faq.name }}: {{ faq.answer }}</li>
+                    <li v-for="faq in getFAQ"
+                        :value="faq.id"
+                        :key="faq.id" class="list-group-item">
+                        <button @click="contentVisible === faq.id ? contentVisible = false : contentVisible = faq.id">{{ faq.name }}</button>
+                        <p v-if='contentVisible === faq.id'>{{ faq.answer }}</p>
+                    </li>
                 </ul>
             </div>
 
@@ -30,10 +33,20 @@
 
 <script>
     export default {
+        data: function() {
+            return {
+                contentVisible: true
+            }
+        },
         mounted() {
             console.log('Component mounted.')
             this.$store.dispatch('ajaxCategoriesFromDB')
             this.$store.dispatch('ajaxFAQFromDB')
+        },
+        methods: {
+            toggle: function(){
+                this.contentVisible = !this.contentVisible
+            }
         },
         computed: {
             getCategories(){
