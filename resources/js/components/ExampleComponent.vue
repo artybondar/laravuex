@@ -15,18 +15,21 @@
                 </div>
             </div>
 
-            <div class="bd-example">
+            <div class="card">
+                <div class="card-header">Вопросы ответы</div>
+                    <div class="card-body">
 
-                <ul class="list-group">Вопросы ответы
-                    <li v-for="faq in getFAQ"
-                        :value="faq.id"
-                        :key="faq.id" class="list-group-item">
-                        <button @click="contentVisible === faq.id ? contentVisible = false : contentVisible = faq.id">{{ faq.name }}</button>
-                        <p v-if='contentVisible === faq.id'>{{ faq.answer }}</p>
-                    </li>
-                </ul>
+                        <ul class="list-group">
+                            <li v-for="faq in getFAQ"
+                                :value="faq.id"
+                                :key="faq.id" class="list-group-item">
+                                <a href="#" @click="contentVisible === faq.id ? contentVisible = false : contentVisible = faq.id">{{ faq.name }}</a>
+                                <p v-if='contentVisible === faq.id'>{{ faq.answer }}</p>
+                            </li>
+                        </ul>
+
+                </div>
             </div>
-
         </div>
     </div>
 </template>
